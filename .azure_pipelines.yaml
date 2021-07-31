@@ -13,6 +13,8 @@ stages:
               versionSpec: 12.x
       - template: .azure/templates/echo-job.yaml
         parameters:
+          dependsOn: 
+            - baseline
           packages:
             names:
               - "@daffodil/cart"
