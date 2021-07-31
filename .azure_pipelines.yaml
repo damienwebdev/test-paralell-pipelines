@@ -11,7 +11,7 @@ stages:
           - task: NodeTool@0
             inputs:
               versionSpec: 12.x
-      - template: .azure/templates/echo-job.yml
+      - template: .azure/templates/echo-job.yaml
         parameters:
           packages:
             names:
