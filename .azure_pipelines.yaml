@@ -8,13 +8,13 @@ stages:
       - job: baseline
         displayName:
         steps:
-          - task: NodeTool@0
-            inputs:
-              versionSpec: 12.x
+          - bash: |
+              PACKAGES_TO_TEST="[{ 'name': '@daffodil/daffio', 'version': '0.0.0-PLACEHOLDER', 'private': true, 'location': '/home/damien/graycore/daffodil/apps/daffio' }]"
+              echo "##vso[task.setvariable variable=someName;isOutput=true;]$PACKAGES_TO_TEST"
       - template: .azure/templates/echo-job.yaml
         parameters:
           dependsOn: 
             - baseline
           packages:
-            names:
-              - "@daffodil/cart"
+            names: $[ dependencies.baseline.outputs['packagesToTest'] ]
+
