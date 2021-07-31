@@ -1,7 +1,7 @@
 pool:
   vmImage: "ubuntu-latest"
 
-stage:
+stages:
   - stage: Test
     displayName: "test"
     jobs:
