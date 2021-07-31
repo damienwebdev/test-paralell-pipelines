@@ -11,7 +11,7 @@ stages:
           - bash: |
               PACKAGES_TO_TEST=$(jq -c . < example.json)
               echo "##vso[task.setvariable variable=packagesToTest;isOutput=true;]$PACKAGES_TO_TEST"
-            name: Compute Packages
+            name: packages
       - job: test
         displayName: "Test"
         strategy:
