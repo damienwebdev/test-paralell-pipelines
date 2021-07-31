@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 stage:
   - stage: Test
@@ -8,10 +8,11 @@ stage:
       - job: baseline
         displayName:
         steps:
-          - task: NodeTool@0 
+          - task: NodeTool@0
             inputs:
               versionSpec: 12.x
       - template: .azure/templates/echo-job.yml
         parameters:
-          packages: 
-            names: ["@daffodil/cart"]
+          packages:
+            names:
+              - "@daffodil/cart"
