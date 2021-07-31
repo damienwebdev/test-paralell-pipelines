@@ -1,0 +1,17 @@
+{
+    "@daffodil/daffio": {
+        "name": "@daffodil/daffio"
+    },
+    "@daffodil/demo": {
+        "name": "@daffodil/demo"
+    },
+    "daffodil/design-land": {
+        "name": "@daffodil/design-land"
+    },
+    "@daffodil/branding": {
+        "name": "@daffodil/branding"
+    },
+    "@daffodil/design": {
+        "name": "@daffodil/design"
+    }
+}
