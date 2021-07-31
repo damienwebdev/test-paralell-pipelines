@@ -18,5 +18,6 @@ stages:
           dependsOn: 
             - baseline
           packages:
-            names: $(packages)
+            names:
+              - $(packages)
 
