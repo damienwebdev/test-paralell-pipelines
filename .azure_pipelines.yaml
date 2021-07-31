@@ -12,11 +12,9 @@ stages:
               PACKAGES_TO_TEST="[{ 'name': '@daffodil/daffio', 'version': '0.0.0-PLACEHOLDER', 'private': true, 'location': '/home/damien/graycore/daffodil/apps/daffio' }]"
               echo "##vso[task.setvariable variable=packagesToTest;isOutput=true;]$PACKAGES_TO_TEST"
       - template: .azure/templates/echo-job.yaml
-        variables: 
-          packages: $[ dependencies.baseline.outputs['packagesToTest'] ]
         parameters:
           dependsOn: 
             - baseline
           packages:
-            names: $(packages)
+            names: $[ dependencies.baseline.outputs['packagesToTest'] ]
 
