@@ -6,7 +6,7 @@ stages:
     displayName: "test"
     jobs:
       - job: baseline
-        displayName:
+        displayName: Compute Packages to test
         steps:
           - bash: |
               PACKAGES_TO_TEST="{ '@daffodil/daffio': { 'name': '@daffodil/daffio', 'version': '0.0.0-PLACEHOLDER', 'private': true, 'location': '/home/damien/graycore/daffodil/apps/daffio' } }"
@@ -20,4 +20,5 @@ stages:
           - baseline
         steps: 
         - script: echo $(name)
+          displayName: Echo Package Name
 
