@@ -9,7 +9,7 @@ stages:
         displayName: Compute Packages to test
         steps:
           - bash: |
-              PACKAGES_TO_TEST=$(cat example.json)
+              PACKAGES_TO_TEST=$(jq -c . < example.json)
               echo "##vso[task.setvariable variable=packagesToTest;isOutput=true;]$PACKAGES_TO_TEST"
             name: packages
       - job: test
