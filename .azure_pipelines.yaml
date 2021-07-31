@@ -13,8 +13,10 @@ stages:
               echo "##vso[task.setvariable variable=packagesToTest;isOutput=true;]$PACKAGES_TO_TEST"
       - template: .azure/templates/echo-job.yaml
         parameters:
+          variables:
+            packages: $[ dependencies.baseline.outputs['packagesToTest'] ]
           dependsOn: 
             - baseline
           packages:
-            names: $[ dependencies.baseline.outputs['packagesToTest'] ]
+            names: $(packages)
 
