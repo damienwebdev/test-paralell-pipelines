@@ -19,5 +19,5 @@ stages:
         dependsOn: 
           - baseline
         steps: 
-        - script: echo ${{ name }}
+        - script: echo $(name)
 
