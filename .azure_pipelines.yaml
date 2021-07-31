@@ -9,16 +9,15 @@ stages:
         displayName:
         steps:
           - bash: |
-              PACKAGES_TO_TEST="[{ 'name': '@daffodil/daffio', 'version': '0.0.0-PLACEHOLDER', 'private': true, 'location': '/home/damien/graycore/daffodil/apps/daffio' }]"
+              PACKAGES_TO_TEST="{ '@daffodil/daffio': { 'name': '@daffodil/daffio', 'version': '0.0.0-PLACEHOLDER', 'private': true, 'location': '/home/damien/graycore/daffodil/apps/daffio' } }"
               echo "##vso[task.setvariable variable=packagesToTest;isOutput=true;]$PACKAGES_TO_TEST"
-      - template: .azure/templates/echo-job.yaml
-        parameters:
-          variables:
-            packages: $[ dependencies.baseline.outputs['packagesToTest'] ]
-          dependsOn: 
-            - baseline
-          packages:
-            names: ["test"]
-          steps: 
-            - script: echo $(packages)
+            name: packages
+      - job: test
+        displayName: "Test"
+        strategy:
+          matrix: $[ dependencies.baseline.outputs['packages.packagesToTest'] ]
+        dependsOn: 
+          - baseline
+        steps: 
+        - script: echo ${{ name }}
 
